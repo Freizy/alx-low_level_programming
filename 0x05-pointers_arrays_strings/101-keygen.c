@@ -8,18 +8,45 @@
  */
 int main(void)
 {
-	char password[17];
+char password[84];
+	int index = 0, sum = 0, x, y;
 
 	srand(time(0));
 
-	for (int i = 0; i < 16; i++)
-  	{
-		int index = rand() % 73;
-		char c = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{};:'\"\\|,.<>/?"[index];
-		
-		password[i] = c;
+	while (sum < 2772)
+	{
+		password[index] = 33 + rand() % 94;
+		sum += password[index++];
 	}
-	password[16] = '\0';
-	printf("Generated password: %s\n", password);
+
+	password[index] = '\0';
+
+	if (sum != 2772)
+	{
+		x = (sum - 2772) / 2;
+		y = (sum - 2772) / 2;
+		if ((sum - 2772) % 2 != 0)
+			x++;
+
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + x))
+			{
+				password[index] -= x;
+				break;
+			}
+		}
+		for (index = 0; password[index]; index++)
+		{
+			if (password[index] >= (33 + y))
+			{
+				password[index] -= y;
+				break;
+			}
+		}
+	}
+
+	printf("%s", password);
+
 	return (0);
 }
