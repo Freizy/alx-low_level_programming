@@ -2,7 +2,7 @@
 
 /**
  * reset_to_98 - Function that takes a parameter to an int
- * @n:int to update
+ * @n: the int to update
  * Return:  0
  */
 
