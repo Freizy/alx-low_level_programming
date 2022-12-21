@@ -1,5 +1,5 @@
 #include "main.h"
-
+#include <stdio.h>
 /**
  * print_array - print n elem of an arr of ints
  * @n: number of elements
